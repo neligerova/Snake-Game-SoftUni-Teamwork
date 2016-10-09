@@ -14,4 +14,24 @@ let drawModule = (function () {
       snake.push({ x: i, y: 0 })
     }
   }
+
+
+
+  let snakeX = snake[0].x
+  let snakeY = snake[0].y
+
+  if(direction == 'right') {
+    snakeX++
+  } else if (direction == 'left') {
+    snakeX--
+  } else if (direction == 'up') {
+    snakeY--
+  } else if (direction == 'down') {
+    snakeY++ }
+
+
+
+
+
+
 })
