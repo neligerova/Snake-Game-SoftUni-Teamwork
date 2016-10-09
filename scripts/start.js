@@ -1,7 +1,7 @@
 
 function init() {
     let snakeImg = new Image();
-    snakeImg.src = './gTe5qA9nc.png';
+    snakeImg.src = 'images/gTe5qA9nc.png';
     
     function begin() {
         let ctx = document.getElementById('canvas').getContext('2d');
