@@ -14,6 +14,16 @@ let drawModule = (function () {
       snake.push({ x: i, y: 0 })
     }
   }
+  
+  
+ let paint = function () {
+    ctx.fillStyle = 'lightgrey'
+    ctx.fillRect(0, 0, w, h)
+    ctx.strokeStyle = 'black'
+    ctx.strokeRect(0, 0, w, h)
+  }
+
+  btn.setAttribute('disabled', true)
 
 
 
@@ -28,6 +38,12 @@ let drawModule = (function () {
     snakeY--
   } else if (direction == 'down') {
     snakeY++ }
+  
+  if (snakeX == -1 || snakeX == w / snakeSize || snakeY == -1 || snakeY == h / snakeSize || collision)
+      btn.removeAttribute('disabled', true)
+  ctx.clearRect(0, 0, w, h)
+  gameloop = clearInterval(gameloop)
+  return
   
    let collision = function(x, y, arr) {
     for (let i=0; i <arr.length; i++) {
