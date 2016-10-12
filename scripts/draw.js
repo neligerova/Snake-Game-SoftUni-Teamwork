@@ -15,6 +15,12 @@ let drawModule = (function () {
     }
   }
 
+  let hamburger = function () {
+  let hamburger = new Image()
+    hamburger.src  = './img/hamburger.png'
+    ctx.drawImage(hamburger, 100, 200)
+  }
+
   let scoreText = function () {
       let score_text = "Score: " + score
       ctx.fillStyle = 'green'
@@ -82,4 +88,4 @@ let drawModule = (function () {
 
 
 
-})
+}())
