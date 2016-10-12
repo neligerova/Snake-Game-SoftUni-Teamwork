@@ -1,4 +1,4 @@
-let mycanvas = document.getElementById('canvas')
+let canvas = document.getElementById('canvas')
 let ctx = canvas.getContext('2d')
 let snakeSize = 10
 let w = 700
