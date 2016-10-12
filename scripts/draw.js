@@ -1,119 +1,127 @@
-let drawModule = (function () {
+var drawModule = (function () {
 
-    let bodySnake = function(x, y) {
-        ctx.fillStyle = 'green'
-        ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize)
-        ctx.strokeStyle = 'darkgreen'
-        ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize)
+    var bodySnake = function(x, y) {
+        ctx.fillStyle = '#9fff80';
+        ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+        ctx.strokeStyle = '#134d00';
+        ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     }
 
-    let hamburger = function(x, y) {
-        ctx.fillStyle = 'white'
-        ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize)
-        ctx.fillStyle = 'red'
-        ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2)
+    var pizza = function(x, y) {
+        ctx.fillStyle = 'yellow';
+        ctx.arc(x*snakeSize, y*snakeSize, 0 ,0.5*Math.PI, 0);
+        ctx.fillStyle = 'red';
+        ctx.arc(x*snakeSize+1, y*snakeSize+1, 0, 0.5*Math.PI,0);
+
+        // ctx.fillStyle = 'yellow';
+        // ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+        // ctx.fillStyle = 'red';
+        // ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
     }
 
-    let scoreText = function() {
-        let score_text = "Score: " + score
-        ctx.fillStyle = 'green'
-        ctx.fillText(score_text, 160, h-5);
+    var scoreText = function() {
+        var score_text = "Score: " + score;
+        ctx.fontSize='20px';
+        ctx.fillStyle = 'blue';
+        ctx.fillText(score_text, 145, h-5);
     }
 
-    let drawSnake = function() {
-        let length = 4
-        snake = []
-        for (let i = length-1; i>=0; i--) {
-            snake.push({x:i, y:0})
+    var drawSnake = function() {
+        var length = 4;
+        snake = [];
+        for (var i = length-1; i>=0; i--) {
+            snake.push({x:i, y:0});
         }
     }
 
-    let paint = function(){
-        ctx.fillStyle = 'lightgrey'
-        ctx.fillRect(0, 0, w, h)
-        ctx.strokeStyle = 'black'
-        ctx.strokeRect(0, 0, w, h)
+    var paint = function(){
+        ctx.fillStyle = 'lightblue';
+        ctx.fillRect(0, 0, w, h);
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(0, 0, w, h);
 
-        btn.setAttribute('disabled', true)
+        btn.setAttribute('disabled', true);
 
-        let snakeX = snake[0].x
-        let snakeY = snake[0].y
+        var snakeX = snake[0].x;
+        var snakeY = snake[0].y;
 
         if (direction == 'right') {
-            snakeX++ }
+            snakeX++; }
         else if (direction == 'left') {
-            snakeX-- }
+            snakeX--; }
         else if (direction == 'up') {
-            snakeY--
+            snakeY--;
         } else if(direction == 'down') {
-            snakeY++ }
+            snakeY++; }
 
-        if (snakeX == -1 || snakeX == w/snakeSize ||
-            snakeY == -1 || snakeY == h/snakeSize ||
-            checkCollision(snakeX, snakeY, snake)) {
-            score=0
-            btn.removeAttribute('disabled', true)
+        if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision(snakeX, snakeY, snake)) {
 
-            ctx.clearRect(0,0,w,h)
-            gameloop = clearInterval(gameloop)
-            return
+            btn.removeAttribute('disabled', true);
+
+            score = 0;
+
+            ctx.clearRect(0,0,w,h);
+            gameloop = clearInterval(gameloop);
+            return;
         }
 
         if(snakeX == food.x && snakeY == food.y) {
-            let tail = {x: snakeX, y: snakeY}
-            score ++
+            var tail = {x: snakeX, y: snakeY}; 
+            score ++;
 
-            createFood()
+            createFood();
         } else {
-            let tail = snake.pop()
-            tail.x = snakeX
-            tail.y = snakeY
+            tail = snake.pop();
+            tail.x = snakeX;
+            tail.y = snakeY;
+        }
+       
+        snake.unshift(tail); 
+
+        for(var i = 0; i < snake.length; i++) {
+            bodySnake(snake[i].x, snake[i].y);
         }
 
-        snake.unshift(tail)
-
-        for(let i = 0; i < snake.length; i++) {
-            bodySnake(snake[i].x, snake[i].y)
-        }
-
-        hamburger(food.x, food.y)
-        scoreText()
+        pizza(food.x, food.y);
+        scoreText();
     }
 
-    let createFood = function() {
+    var createFood = function() {
         food = {
             x: Math.floor((Math.random() * 30) + 1),
             y: Math.floor((Math.random() * 30) + 1)
         }
 
-        for (let i=0; i>snake.length; i++) {
-            let snakeX = snake[i].x
-            let snakeY = snake[i].y
+        for (var i=0; i>snake.length; i++) {
+            var snakeX = snake[i].x;
+            var snakeY = snake[i].y;
 
             if (food.x===snakeX && food.y === snakeY || food.y === snakeY && food.x===snakeX) {
-                food.x = Math.floor((Math.random() * 30) + 1)
-                food.y = Math.floor((Math.random() * 30) + 1)
+                food.x = Math.floor((Math.random() * 30) + 1);
+                food.y = Math.floor((Math.random() * 30) + 1);
             }
         }
     }
 
-    let checkCollision = function(x, y, array) {
-        for(let i = 0; i < array.length; i++) {
+    var checkCollision = function(x, y, array) {
+        for(var i = 0; i < array.length; i++) {
             if(array[i].x === x && array[i].y === y)
-                return true
+                return true;
         }
-        return false
+        return false;
     }
 
-    let init = function(){
-        direction = 'down'
-        drawSnake()
-        createFood()
-        gameloop = setInterval(paint, 80)
+    var init = function(){
+        direction = 'down';
+        drawSnake();
+        createFood();
+        gameloop = setInterval(paint, 80);
     }
+
 
     return {
         init : init
-    }
+    };
 
-}())
+
+}());

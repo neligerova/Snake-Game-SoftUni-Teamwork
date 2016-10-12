@@ -1,4 +1,3 @@
-
 (function (window, document, drawModule, undefined) {
 
     let btn = document.getElementById('btn');
@@ -44,4 +43,4 @@
     }
 
 
-}) (window, document, drawModule);
+}) (window, document, drawModule)
