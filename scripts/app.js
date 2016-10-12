@@ -1,6 +1,4 @@
-/**
- * Created by User on 10/12/2016.
- */
+
 (function (window, document, drawModule, undefined) {
 
     let btn = document.getElementById('btn')
