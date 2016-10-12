@@ -1,8 +1,9 @@
-let mycanvas = document.getElementById('mycanvas')
-let ctx = mycanvas.getContext('2d')
+let mycanvas = document.getElementById('canvas')
+let ctx = canvas.getContext('2d')
 let snakeSize = 10
-let w = 800
-let h = 600
+let w = 700
+let h = 500
 let score = 0
 let snake
+let snakeSize = 10
 let food
