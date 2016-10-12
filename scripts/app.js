@@ -1,10 +1,10 @@
 
 (function (window, document, drawModule, undefined) {
 
-    let btn = document.getElementById('btn')
-    btn.addEventListener("click", function(){ drawModule.init()})
+    let btn = document.getElementById('btn');
+    btn.addEventListener("click", function(){ drawModule.init()});
 
-    window.addEventListener('keydown', kbdHandler)
+    window.addEventListener('keydown', kbdHandler);
 
     function kbdHandler(event) {
 
@@ -17,31 +17,31 @@
                     direction = 'left'
                 }
 
-                break
+                break;
 
             case "ArrowRight":
                 if (direction != 'left') {
                     direction = 'right'
 
                 }
-                break
+                break;
 
             case "ArrowUp":
                 if (direction != 'down') {
                     direction = 'up'
 
                 }
-                break
+                break;
 
             case "ArrowDown":
                 if (direction != 'up') {
                     direction = 'down'
 
                 }
-                break
+                break;
         }
 
     }
 
 
-}) (window, document, drawModule)
+}) (window, document, drawModule);
