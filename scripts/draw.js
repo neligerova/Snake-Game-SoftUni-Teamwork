@@ -47,7 +47,7 @@ let drawModule = (function () {
       } else if(direction == 'down') { 
         snakeY++; }
 
-      if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision(snakeX, snakeY, snake)) {
+      if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || collision(snakeX, snakeY, snake)) {
           //restart game
           btn.removeAttribute('disabled', true);
 
