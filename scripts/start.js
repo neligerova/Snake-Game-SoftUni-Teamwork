@@ -20,6 +20,7 @@ function init() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText("Click to begin", 490, 200  );
+   
 
     ctx.fillStyle = "white";
     ctx.fillRect(390, 230, 200, 40);
