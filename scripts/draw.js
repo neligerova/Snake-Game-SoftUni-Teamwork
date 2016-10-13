@@ -1,4 +1,8 @@
-var drawModule = (function () { 
+var drawModule = (function () {
+
+    ctx.font = "50px Papyrus ";
+    ctx.fillStyle = 'blue';
+    ctx.fillText("Snake Game",290,50);
 
   var bodySnake = function(x, y) {
         ctx.fillStyle = '#d4ff2a';
@@ -17,7 +21,7 @@ var drawModule = (function () {
   var scoreText = function() {
     var score_text = "Score: " + score;
     ctx.fillStyle = 'blue';
-      ctx.font = '15 px';
+      ctx.font = '10 px';
     ctx.fillText(score_text, 145, h-5);
   }
 
@@ -54,6 +58,9 @@ var drawModule = (function () {
           btn.removeAttribute('disabled', true);
           score=0;
           ctx.clearRect(0,0,w,h);
+          ctx.font = "50px Papyrus ";
+          ctx.fillStyle = 'blue';
+          ctx.fillText("Game Over",290,50);
           gameloop = clearInterval(gameloop);
           return;          
         }
