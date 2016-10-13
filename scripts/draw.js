@@ -8,20 +8,15 @@ var drawModule = (function () {
     }
 
     var pizza = function(x, y) {
-        ctx.fillStyle = 'yellow';
-        ctx.arc(x*snakeSize, y*snakeSize, 0 ,0.5*Math.PI, 0);
-        ctx.fillStyle = 'red';
-        ctx.arc(x*snakeSize+1, y*snakeSize+1, 0, 0.5*Math.PI,0);
-
-        // ctx.fillStyle = 'yellow';
-        // ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
-        // ctx.fillStyle = 'red';
-        // ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
+         ctx.fillStyle = 'yellow';
+         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+         ctx.fillStyle = 'red';
+         ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
     }
 
     var scoreText = function() {
         var score_text = "Score: " + score;
-        ctx.fontSize='20px';
+        ctx.font="15px Verdana";
         ctx.fillStyle = 'blue';
         ctx.fillText(score_text, 145, h-5);
     }
