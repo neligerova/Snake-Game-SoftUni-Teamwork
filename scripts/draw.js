@@ -1,7 +1,7 @@
 var drawModule = (function () { 
 
   var bodySnake = function(x, y) {
-        ctx.fillStyle = 'green';
+        ctx.fillStyle = '#d4ff2a';
         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
         ctx.strokeStyle = 'darkgreen';
         ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
@@ -17,6 +17,7 @@ var drawModule = (function () {
   var scoreText = function() {
     var score_text = "Score: " + score;
     ctx.fillStyle = 'blue';
+      ctx.font = '15 px';
     ctx.fillText(score_text, 145, h-5);
   }
 
@@ -29,7 +30,7 @@ var drawModule = (function () {
   }
     
   var paint = function(){
-      ctx.fillStyle = 'lightgrey';
+      ctx.fillStyle = 'lightblue';
       ctx.fillRect(0, 0, w, h);
       ctx.strokeStyle = 'black';
       ctx.strokeRect(0, 0, w, h);
@@ -49,9 +50,9 @@ var drawModule = (function () {
         snakeY++; }
 
       if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision(snakeX, snakeY, snake)) {
-          //restart game
+
           btn.removeAttribute('disabled', true);
-          score=0
+          score=0;
           ctx.clearRect(0,0,w,h);
           gameloop = clearInterval(gameloop);
           return;          
