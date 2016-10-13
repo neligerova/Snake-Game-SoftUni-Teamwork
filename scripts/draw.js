@@ -58,17 +58,17 @@ var drawModule = (function () {
         }
         
         if(snakeX == food.x && snakeY == food.y) {
-          var tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
+          var tail = {x: snakeX, y: snakeY}; 
           score ++;
           
-          createFood(); //Create new food
+          createFood();
         } else {
-          var tail = snake.pop(); //pops out the last cell
+          var tail = snake.pop(); 
           tail.x = snakeX; 
           tail.y = snakeY;
         }
-        //The snake can now eat the food.
-        snake.unshift(tail); //puts back the tail as the first cell
+        
+        snake.unshift(tail); 
 
         for(var i = 0; i < snake.length; i++) {
           bodySnake(snake[i].x, snake[i].y);
